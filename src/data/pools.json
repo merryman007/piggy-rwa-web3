@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "title": "Accra Commercial Hub Pool",
+    "targetProperty": "Prime Commercial Land - Accra CBD",
+    "targetAmount": "250,000",
+    "currentAmount": "185,000",
+    "participants": 47,
+    "timeRemaining": "23 days",
+    "minContribution": "1,000",
+    "description": "Join 46 other savers to collectively purchase prime commercial real estate in Accra's business district.",
+    "progress": 74,
+    "verified": true,
+    "features": ["Commercial property", "High growth potential", "47 participants", "Blockchain verified"]
+  },
+  {
+    "id": 2,
+    "title": "Lagos Luxury Living Pool",
+    "targetProperty": "Residential Plot - Lagos Victoria Island",
+    "targetAmount": "180,000",
+    "currentAmount": "127,000",
+    "participants": 32,
+    "timeRemaining": "16 days",
+    "minContribution": "2,500",
+    "description": "Exclusive opportunity to own luxury residential land in Victoria Island with other savvy investors.",
+    "progress": 71,
+    "verified": true,
+    "features": ["Luxury location", "Waterfront proximity", "32 participants", "High ROI potential"]
+  },
+  {
+    "id": 3,
+    "title": "East Africa Agriculture Fund",
+    "targetProperty": "Agricultural Land - Nairobi Outskirts",
+    "targetAmount": "95,000",
+    "currentAmount": "71,000",
+    "participants": 28,
+    "timeRemaining": "12 days",
+    "minContribution": "500",
+    "description": "Sustainable farming investment with strong growth potential as Nairobi expands.",
+    "progress": 75,
+    "verified": true,
+    "features": ["Agricultural land", "Sustainable investment", "28 participants", "Growing region"]
+  },
+  {
+    "id": 4,
+    "title": "Ghana Tourism Development Pool",
+    "targetProperty": "Beachfront Property - Cape Coast",
+    "targetAmount": "320,000",
+    "currentAmount": "96,000",
+    "participants": 18,
+    "timeRemaining": "45 days",
+    "minContribution": "5,000",
+    "description": "Tourism-focused investment in Ghana's beautiful coastline with resort development potential.",
+    "progress": 30,
+    "verified": true,
+    "features": ["Beachfront property", "Tourism potential", "18 participants", "Resort development"]
+  },
+  {
+    "id": 5,
+    "title": "Rwanda Urban Growth Pool",
+    "targetProperty": "Mixed-Use Development - Kigali",
+    "targetAmount": "275,000",
+    "currentAmount": "55,000",
+    "participants": 12,
+    "timeRemaining": "38 days",
+    "minContribution": "3,000",
+    "description": "Be part of Rwanda's remarkable urban development story in the heart of Kigali.",
+    "progress": 20,
+    "verified": true,
+    "features": ["Mixed-use development", "Rapid growth", "12 participants", "Government backing"]
+  }
+]

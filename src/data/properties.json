@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "title": "Prime Commercial Land - Accra CBD",
+    "price": "250,000",
+    "location": "Central Business District, Accra, Ghana",
+    "growthPotential": "High - 15% annually",
+    "status": "Available",
+    "image": "/api/placeholder/400/300",
+    "description": "Premium commercial land in the heart of Accra's business district. Perfect for office buildings or mixed-use development.",
+    "size": "2,500 sqm",
+    "verified": true,
+    "features": ["Prime location", "Commercial zoning", "Easy access to transportation", "Growing business district"]
+  },
+  {
+    "id": 2,
+    "title": "Residential Plot - Lagos Victoria Island",
+    "price": "180,000",
+    "location": "Victoria Island, Lagos, Nigeria",
+    "growthPotential": "Very High - 20% annually",
+    "status": "Available",
+    "image": "/api/placeholder/400/300",
+    "description": "Exclusive residential land in Lagos' most prestigious area. High-end development potential.",
+    "size": "1,800 sqm",
+    "verified": true,
+    "features": ["Waterfront proximity", "Luxury neighborhood", "High appreciation potential", "Infrastructure ready"]
+  },
+  {
+    "id": 3,
+    "title": "Agricultural Land - Nairobi Outskirts",
+    "price": "95,000",
+    "location": "Kiambu County, Nairobi, Kenya",
+    "growthPotential": "Medium - 12% annually",
+    "status": "75% Funded",
+    "image": "/api/placeholder/400/300",
+    "description": "Fertile agricultural land perfect for farming or future residential development as the city expands.",
+    "size": "5,000 sqm",
+    "verified": true,
+    "features": ["Fertile soil", "Water access", "Growing area", "Development potential"]
+  },
+  {
+    "id": 4,
+    "title": "Beachfront Property - Cape Coast",
+    "price": "320,000",
+    "location": "Cape Coast, Ghana",
+    "growthPotential": "High - 18% annually",
+    "status": "Available",
+    "image": "/api/placeholder/400/300",
+    "description": "Stunning beachfront property with tourism development potential. Prime location for resort or luxury residential project.",
+    "size": "3,200 sqm",
+    "verified": true,
+    "features": ["Ocean frontage", "Tourism potential", "Scenic location", "Development ready"]
+  },
+  {
+    "id": 5,
+    "title": "Industrial Zone - Kampala",
+    "price": "140,000",
+    "location": "Industrial Area, Kampala, Uganda",
+    "growthPotential": "Medium - 14% annually",
+    "status": "50% Funded",
+    "image": "/api/placeholder/400/300",
+    "description": "Strategic industrial land in Kampala's manufacturing hub. Perfect for warehouse or factory development.",
+    "size": "4,000 sqm",
+    "verified": true,
+    "features": ["Industrial zoning", "Transport links", "Utility access", "Growing industrial area"]
+  },
+  {
+    "id": 6,
+    "title": "Mixed-Use Development - Kigali",
+    "price": "275,000",
+    "location": "Kigali City Center, Rwanda",
+    "growthPotential": "Very High - 22% annually",
+    "status": "Available",
+    "image": "/api/placeholder/400/300",
+    "description": "Prime mixed-use development opportunity in Rwanda's rapidly growing capital city.",
+    "size": "2,800 sqm",
+    "verified": true,
+    "features": ["City center location", "Mixed-use zoning", "Rapid urban growth", "Government support"]
+  }
+]
