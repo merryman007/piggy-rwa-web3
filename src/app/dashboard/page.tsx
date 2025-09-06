@@ -87,24 +87,24 @@ export default function Dashboard() {
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-8">
+        <div className="mb-8 animate-fade-in-up">
           <h1 className="text-3xl font-bold text-gray-900">Savings Dashboard</h1>
           <p className="text-gray-600 mt-2">Track your savings goals and property investments</p>
         </div>
 
         {/* Wallet Balance */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white rounded-lg p-6 shadow-sm">
+          <div className="bg-white rounded-lg p-6 shadow-sm hover-lift animate-fade-in-scale delay-100">
             <h3 className="text-lg font-semibold text-gray-900 mb-2">USDC Balance</h3>
-            <p className="text-3xl font-bold text-blue-600">${wallet.balance.usdc}</p>
+            <p className="text-3xl font-bold text-blue-600 animate-float">${wallet.balance.usdc}</p>
           </div>
-          <div className="bg-white rounded-lg p-6 shadow-sm">
+          <div className="bg-white rounded-lg p-6 shadow-sm hover-lift animate-fade-in-scale delay-200">
             <h3 className="text-lg font-semibold text-gray-900 mb-2">USDT Balance</h3>
-            <p className="text-3xl font-bold text-green-600">${wallet.balance.usdt}</p>
+            <p className="text-3xl font-bold text-green-600 animate-float delay-100">${wallet.balance.usdt}</p>
           </div>
-          <div className="bg-white rounded-lg p-6 shadow-sm">
+          <div className="bg-white rounded-lg p-6 shadow-sm hover-lift animate-fade-in-scale delay-300">
             <h3 className="text-lg font-semibold text-gray-900 mb-2">DAI Balance</h3>
-            <p className="text-3xl font-bold text-purple-600">${wallet.balance.dai}</p>
+            <p className="text-3xl font-bold text-purple-600 animate-float delay-200">${wallet.balance.dai}</p>
           </div>
         </div>
 
@@ -113,7 +113,7 @@ export default function Dashboard() {
           <h2 className="text-2xl font-bold text-gray-900">Your Savings Goals</h2>
           <button
             onClick={() => setShowCreateGoal(true)}
-            className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700"
+            className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 animate-pulse-glow"
           >
             Create New Goal
           </button>
@@ -227,7 +227,7 @@ function GoalCard({ goal, onLockFunds, walletBalance }: GoalCardProps) {
 
   return (
     <>
-      <div className="bg-white rounded-lg p-6 shadow-sm">
+      <div className="bg-white rounded-lg p-6 shadow-sm hover-lift animate-fade-in-scale hover-glow">
         <h3 className="text-xl font-semibold text-gray-900 mb-2">{goal.title}</h3>
         <div className="mb-4">
           <div className="flex justify-between text-sm text-gray-600 mb-1">
@@ -236,7 +236,7 @@ function GoalCard({ goal, onLockFunds, walletBalance }: GoalCardProps) {
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2">
             <div
-              className="bg-indigo-600 h-2 rounded-full"
+              className="bg-indigo-600 h-2 rounded-full transition-all duration-1000 ease-out"
               style={{ width: `${goal.progress}%` }}
             ></div>
           </div>
@@ -257,7 +257,7 @@ function GoalCard({ goal, onLockFunds, walletBalance }: GoalCardProps) {
         </div>
         <button
           onClick={() => setShowLockModal(true)}
-          className="w-full bg-indigo-600 text-white py-2 rounded-lg font-semibold hover:bg-indigo-700"
+          className="w-full bg-indigo-600 text-white py-2 rounded-lg font-semibold hover:bg-indigo-700 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
         >
           Lock Funds
         </button>

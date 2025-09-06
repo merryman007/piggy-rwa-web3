@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { Property } from '@/types';
 import properties from '@/data/properties.json';
@@ -95,17 +97,19 @@ function PropertyCard({ property }: PropertyCardProps) {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
-      {/* Property Image Placeholder */}
-      <div className="h-48 bg-gradient-to-r from-indigo-500 to-purple-600 relative">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-white text-center">
-            <svg className="w-16 h-16 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
-            </svg>
-            <p className="text-sm opacity-75">Property Image</p>
-          </div>
-        </div>
+    <div className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-2xl transition-all duration-300 hover-lift hover-glow animate-fade-in-scale">
+      {/* Property Image */}
+      <div className="h-48 relative overflow-hidden bg-gradient-to-r from-indigo-500 to-purple-600">
+        <img 
+          src={property.image} 
+          alt={property.title}
+          className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.style.display = 'none';
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
         {property.verified && (
           <div className="absolute top-4 right-4 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
             ✓ Verified
@@ -149,7 +153,7 @@ function PropertyCard({ property }: PropertyCardProps) {
           </div>
           <Link 
             href={`/properties/${property.id}`}
-            className="bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700 transition-colors"
+            className="bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
           >
             View Details
           </Link>
