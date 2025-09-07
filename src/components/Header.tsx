@@ -25,9 +25,9 @@ export default function Header() {
               <motion.div 
                 whileHover={{ scale: 1.05, rotate: 5 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-sm"
+                className="w-10 h-10 rounded-xl flex items-center justify-center shadow-sm"
               >
-                <Anchor weight="fill" className="text-white w-5 h-5" />
+                <img src="/icons/logo.svg" alt="HavenFi Logo" className="w-8 h-8" />
               </motion.div>
               <span className="text-foreground">HavenFi</span>
             </Link>
@@ -74,10 +74,10 @@ export default function Header() {
                       {wallet.address?.slice(0, 6)}...{wallet.address?.slice(-4)}
                     </div>
                     <div className="flex items-center space-x-2 text-xs">
-                      <Badge variant="secondary" className="text-xs px-2 py-0 bg-secondary/20 text-secondary font-medium">
+                      <Badge className="text-xs px-2 py-0 bg-primary text-primary-foreground font-medium border-0">
                         HAVEN: {wallet.havenTokens}
                       </Badge>
-                      <Badge variant="outline" className="text-xs px-2 py-0 border-border text-muted-foreground">
+                      <Badge variant="outline" className="text-xs px-2 py-0 border-muted-foreground/30 text-foreground bg-background/80">
                         USDC: ${wallet.balance.usdc}
                       </Badge>
                     </div>

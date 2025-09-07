@@ -126,7 +126,7 @@ export default function Home() {
                 iconBg: "bg-secondary",
                 delay: 0.4 
               }
-            ].map((stat, index) => (
+            ].map((stat) => (
               <motion.div
                 key={stat.label}
                 initial={{ opacity: 0, y: 20 }}
@@ -195,7 +195,7 @@ export default function Home() {
                 delay: 0.6,
                 badge: "Audited & Secure"
               }
-            ].map((feature, index) => (
+            ].map((feature) => (
               <motion.div
                 key={feature.title}
                 initial={{ opacity: 0, y: 30 }}
@@ -263,7 +263,7 @@ export default function Home() {
               Professional DeFi?
             </h2>
             <p className="font-body text-xl text-gray-100 mb-10 max-w-2xl mx-auto leading-relaxed" style={{textShadow: '1px 1px 2px rgba(0,0,0,0.7)'}}>
-              Join hundreds of users who've found their trusted guide to DeFi savings. Start with any amount and watch your assets grow securely.
+              Join hundreds of users who&apos;ve found their trusted guide to DeFi savings. Start with any amount and watch your assets grow securely.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -308,7 +308,7 @@ export default function Home() {
                 <span style={{textShadow: '1px 1px 2px rgba(0,0,0,0.8)'}}>Twitter/X</span>
               </a>
               <a 
-                href="https://t.me/havenfi" 
+                href="https://t.me/HavenFi_RWA" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center bg-black/30 backdrop-blur border border-white/20 px-4 py-2 rounded-full shadow-lg hover:bg-black/40 transition-all duration-200 hover:scale-105"

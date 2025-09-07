@@ -6,7 +6,7 @@ import { Pool } from '@/types';
 import pools from '@/data/pools.json';
 
 export default function LiquidityPools() {
-  const { wallet, connect, hasHavenAccess } = useWallet();
+  const { wallet, connect } = useWallet();
   const [showJoinModal, setShowJoinModal] = useState(false);
   const [selectedPool, setSelectedPool] = useState<Pool | null>(null);
   const [contributionAmount, setContributionAmount] = useState('');
@@ -134,7 +134,7 @@ export default function LiquidityPools() {
                 </div>
                 <div className="bg-green-50 border border-green-200 rounded-lg p-3">
                   <p className="text-sm text-green-800">
-                    You'll own a proportional share of {selectedPool.targetProperty} 
+                    You&apos;ll own a proportional share of {selectedPool.targetProperty} 
                     based on your contribution percentage.
                   </p>
                 </div>

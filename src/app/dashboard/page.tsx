@@ -5,7 +5,7 @@ import { useWallet } from '@/context/WalletContext';
 import { SavingsGoal } from '@/types';
 
 export default function Dashboard() {
-  const { wallet, connect, hasHavenAccess } = useWallet();
+  const { wallet, connect } = useWallet();
   const [savingsGoals, setSavingsGoals] = useState<SavingsGoal[]>([]);
   const [showCreateGoal, setShowCreateGoal] = useState(false);
   const [newGoal, setNewGoal] = useState({
