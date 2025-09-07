@@ -1,28 +1,119 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Harbor Design System Colors */
+  --background: 244 247 249; /* #F4F6F9 - Clean off-white */
+  --foreground: 15 23 42; /* Slate-800 for text */
+  --card: 255 255 255; /* Pure white cards */
+  --card-foreground: 15 23 42;
+  
+  /* Primary: Professional Blue (#0B4F6C) */
+  --primary: 202 73% 23%; /* #0B4F6C */
+  --primary-foreground: 255 255 255;
+  
+  /* Secondary: Growth Green (#2A9D8F) */
+  --secondary: 174 60% 40%; /* #2A9D8F */
+  --secondary-foreground: 255 255 255;
+  
+  /* Accent: Highlight Gold (#E9C46A) */
+  --accent: 47 76% 66%; /* #E9C46A */
+  --accent-foreground: 30 41% 25%;
+  
+  /* Neutral colors */
+  --muted: 210 40% 96%;
+  --muted-foreground: 64 75% 46%;
+  --border: 214 32% 91%;
+  --input: 214 32% 91%;
+  --ring: 202 73% 23%;
+  
+  /* Semantic colors */
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 20% 98%;
+  --success: 174 60% 40%; /* Same as secondary */
+  --success-foreground: 255 255 255;
+  --warning: 47 76% 66%; /* Same as accent */
+  --warning-foreground: 30 41% 25%;
+  
+  --radius: 0.75rem;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --radius: var(--radius);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 210 20% 98%;
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 210 20% 98%;
+    --primary-foreground: 220.9 39.3% 11%;
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 216 12.2% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
   }
 }
 
+* {
+  border-color: hsl(var(--border));
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+/* Typography Classes */
+.font-heading {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-weight: 600;
+}
+
+.font-body {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 /* Custom Animations */

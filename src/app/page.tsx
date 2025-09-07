@@ -1,128 +1,333 @@
+'use client';
+
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Vault, TrendUp, Shield, Users, ChartLine, Buildings, X, TelegramLogo, FileText } from "phosphor-react";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-slate-50">
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 animate-fade-in-up">
-            Secure <span className="text-blue-600 animate-float">DeFi Vaults</span>.
-            <br />
-            Access <span className="text-slate-600 animate-float delay-200">Real Assets</span>.
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto animate-fade-in-up delay-300">
-            Professional-grade DeFi platform providing verified access to tokenized real estate opportunities. Hold HAVEN tokens for exclusive vault features.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up delay-500">
-            <Link 
-              href="/dashboard"
-              className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl"
-            >
-              Open Vault
-            </Link>
-            <Link 
-              href="/properties"
-              className="bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold border-2 border-blue-600 hover:bg-blue-50 transition-all duration-200"
-            >
-              Explore Opportunities
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-            <div className="animate-count-up delay-100">
-              <div className="text-4xl font-bold text-blue-600 mb-2 animate-float">$2.5M+</div>
-              <div className="text-gray-600">Total Value Locked</div>
-            </div>
-            <div className="animate-count-up delay-200">
-              <div className="text-4xl font-bold text-slate-600 mb-2 animate-float delay-100">450+</div>
-              <div className="text-gray-600">HAVEN Holders</div>
-            </div>
-            <div className="animate-count-up delay-300">
-              <div className="text-4xl font-bold text-green-600 mb-2 animate-float delay-200">25</div>
-              <div className="text-gray-600">Verified Opportunities</div>
-            </div>
-            <div className="animate-count-up delay-400">
-              <div className="text-4xl font-bold text-emerald-600 mb-2 animate-float delay-300">100%</div>
-              <div className="text-gray-600">Asset Transparency</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Why Choose HavenFi?
-            </h2>
-            <p className="text-xl text-gray-600">
-              Professional DeFi infrastructure for real asset access
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="text-center animate-slide-in-left delay-200 hover-lift">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Secure DeFi Vaults</h3>
-              <p className="text-gray-600">
-                Hold stablecoins in smart contract vaults with complete transparency and security.
-              </p>
-            </div>
-            
-            <div className="text-center animate-fade-in-scale delay-400 hover-lift">
-              <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-8 h-8 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Tokenized Real Assets</h3>
-              <p className="text-gray-600">
-                Access verified, tokenized real estate opportunities with full legal documentation.
-              </p>
-            </div>
-            
-            <div className="text-center animate-slide-in-right delay-600 hover-lift">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse-glow delay-400">
-                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Liquidity Pools</h3>
-              <p className="text-gray-600">
-                Participate in shared liquidity for fractional asset opportunities.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-blue-600">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to Access Professional DeFi?
-          </h2>
-          <p className="text-xl text-blue-200 mb-8">
-            Hold HAVEN tokens to unlock exclusive vault features and verified asset opportunities.
-          </p>
-          <Link 
-            href="/dashboard"
-            className="bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg"
+      <section className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            Open Vault
-          </Link>
+            
+            <h1 className="font-heading text-5xl md:text-7xl font-bold text-foreground mb-6 leading-tight">
+              Secure 
+              <span className="text-primary"> DeFi Vaults</span>
+              <br />
+              Access <span className="text-secondary">Real Assets</span>
+            </h1>
+          </motion.div>
+          
+          <motion.p 
+            className="font-body text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            A friendly yet trustworthy platform where your assets find security and growth. Simplified DeFi with transparent access to tokenized real estate opportunities.
+          </motion.p>
+          
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-4 font-medium shadow-lg hover:shadow-xl transition-all duration-200">
+                <Link href="/dashboard">
+                  <Vault weight="fill" className="w-5 h-5 mr-2" />
+                  Start Saving
+                </Link>
+              </Button>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Button asChild variant="outline" size="lg" className="text-lg px-8 py-4 border-2 text-foreground hover:bg-accent/10 hover:text-accent-foreground hover:border-accent">
+                <Link href="/properties">
+                  <Buildings weight="regular" className="w-5 h-5 mr-2" />
+                  Explore Assets
+                </Link>
+              </Button>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Trust & Security Stats */}
+      <section className="py-20 bg-card">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <h2 className="font-heading text-3xl font-bold text-foreground mb-4">
+              Built on Trust & Transparency
+            </h2>
+            <p className="font-body text-muted-foreground">Real numbers from real users who trust HavenFi with their assets</p>
+          </motion.div>
+
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            {[
+              { 
+                icon: ChartLine, 
+                value: "$2.5M+", 
+                label: "Assets Secured", 
+                color: "text-primary", 
+                bg: "bg-primary/10", 
+                iconBg: "bg-primary",
+                delay: 0.1 
+              },
+              { 
+                icon: Users, 
+                value: "450+", 
+                label: "Trusted Users", 
+                color: "text-secondary", 
+                bg: "bg-secondary/10", 
+                iconBg: "bg-secondary",
+                delay: 0.2 
+              },
+              { 
+                icon: Buildings, 
+                value: "25", 
+                label: "Verified Properties", 
+                color: "text-accent-foreground", 
+                bg: "bg-accent/20", 
+                iconBg: "bg-accent",
+                delay: 0.3 
+              },
+              { 
+                icon: Shield, 
+                value: "100%", 
+                label: "Asset Transparency", 
+                color: "text-secondary", 
+                bg: "bg-secondary/10", 
+                iconBg: "bg-secondary",
+                delay: 0.4 
+              }
+            ].map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: stat.delay }}
+                whileHover={{ y: -4 }}
+                className="group"
+              >
+                <Card className="p-6 transition-all duration-200 group-hover:shadow-lg border-0 bg-background/60 backdrop-blur">
+                  <CardContent className="p-0 text-center">
+                    <div className={`w-12 h-12 ${stat.iconBg} rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}>
+                      <stat.icon weight="fill" className="w-6 h-6 text-white" />
+                    </div>
+                    <div className={`font-heading text-3xl md:text-4xl font-bold ${stat.color} mb-2`}>
+                      {stat.value}
+                    </div>
+                    <div className="font-body text-muted-foreground font-medium">{stat.label}</div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Features Section - Trust & Education Focus */}
+      <section className="py-20 bg-background">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-4">
+              Why HavenFi is Your Trusted Guide
+            </h2>
+            <p className="font-body text-xl text-muted-foreground max-w-3xl mx-auto">
+              We simplify complex DeFi concepts and prioritize transparency in every step of your journey
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: Vault,
+                title: "Simple Savings, Smart Growth",
+                description: "No complex DeFi jargon. Just secure savings that grow with transparent, real-world assets. Every step explained in simple terms.",
+                bgColor: "bg-primary",
+                delay: 0.2,
+                badge: "Easy to Use"
+              },
+              {
+                icon: Buildings,
+                title: "See Every Property Detail",
+                description: "View actual property photos, legal documents, and performance data. Complete transparency means you know exactly where your money works.",
+                bgColor: "bg-secondary",
+                delay: 0.4,
+                badge: "100% Transparent"
+              },
+              {
+                icon: Shield,
+                title: "Security Without Friction",
+                description: "Bank-level security that's simple to set up. Multi-factor protection and audit reports from trusted firms keep your assets safe.",
+                bgColor: "bg-accent",
+                delay: 0.6,
+                badge: "Audited & Secure"
+              }
+            ].map((feature, index) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: feature.delay }}
+                whileHover={{ y: -8 }}
+                className="group"
+              >
+                <Card className="p-8 h-full hover:shadow-xl transition-all duration-300 border-0 bg-card relative overflow-hidden">
+                  <CardContent className="p-0 relative z-10">
+                    {/* Trust Badge */}
+                    <Badge className="mb-4 bg-accent/20 text-accent-foreground border-0 text-xs font-medium">
+                      {feature.badge}
+                    </Badge>
+                    
+                    {/* Icon */}
+                    <div className={`w-14 h-14 ${feature.bgColor} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-200`}>
+                      <feature.icon weight="fill" className="w-7 h-7 text-white" />
+                    </div>
+                    
+                    {/* Content */}
+                    <h3 className="font-heading text-xl font-bold text-foreground mb-4">{feature.title}</h3>
+                    <p className="font-body text-muted-foreground leading-relaxed">
+                      {feature.description}
+                    </p>
+                    
+                    {/* Learn More Link */}
+                    <motion.div 
+                      className="mt-6 flex items-center text-primary hover:text-primary/80 font-medium text-sm cursor-pointer"
+                      whileHover={{ x: 5 }}
+                    >
+                      <span>Learn More</span>
+                      <TrendUp weight="bold" className="w-4 h-4 ml-2" />
+                    </motion.div>
+                  </CardContent>
+                  
+                  {/* Subtle background decoration */}
+                  <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full bg-gradient-to-tr from-primary/5 to-secondary/5 group-hover:scale-110 transition-transform duration-500"></div>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section - Harbor Launch */}
+      <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0">
+          <div className="absolute top-10 left-10 w-32 h-32 rounded-full bg-primary/10"></div>
+          <div className="absolute bottom-10 right-10 w-24 h-24 rounded-full bg-secondary/10"></div>
+          <div className="absolute top-1/2 left-1/4 w-16 h-16 rounded-full bg-accent/10"></div>
+        </div>
+        
+        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            
+            <h2 className="font-heading text-4xl md:text-6xl font-bold text-white mb-6 leading-tight" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
+              Ready to Access
+              <br />
+              Professional DeFi?
+            </h2>
+            <p className="font-body text-xl text-gray-100 mb-10 max-w-2xl mx-auto leading-relaxed" style={{textShadow: '1px 1px 2px rgba(0,0,0,0.7)'}}>
+              Join hundreds of users who've found their trusted guide to DeFi savings. Start with any amount and watch your assets grow securely.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Button asChild size="lg" className="bg-white text-slate-900 hover:bg-gray-100 hover:text-slate-800 text-lg px-8 py-4 font-semibold shadow-xl border-2 border-white/20 transition-all duration-300 hover:shadow-2xl hover:scale-105">
+                  <Link href="/dashboard">
+                    <Vault weight="fill" className="w-5 h-5 mr-2" />
+                    Start Your Journey
+                  </Link>
+                </Button>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Button asChild variant="outline" size="lg" className="text-lg px-8 py-4 border-2 border-white/30 text-white hover:bg-white/10 bg-transparent">
+                  <Link href="/properties">
+                    <TrendUp weight="bold" className="w-5 h-5 mr-2" />
+                    See Performance
+                  </Link>
+                </Button>
+              </motion.div>
+            </div>
+            
+            {/* Social Links */}
+            <motion.div 
+              className="mt-12 flex flex-wrap justify-center items-center gap-6 text-white text-sm font-medium"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8, duration: 0.6 }}
+            >
+              <a 
+                href="https://x.com/havenfi" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center bg-black/30 backdrop-blur border border-white/20 px-4 py-2 rounded-full shadow-lg hover:bg-black/40 transition-all duration-200 hover:scale-105"
+              >
+                <X weight="fill" className="w-4 h-4 mr-2 text-white" />
+                <span style={{textShadow: '1px 1px 2px rgba(0,0,0,0.8)'}}>Twitter/X</span>
+              </a>
+              <a 
+                href="https://t.me/havenfi" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center bg-black/30 backdrop-blur border border-white/20 px-4 py-2 rounded-full shadow-lg hover:bg-black/40 transition-all duration-200 hover:scale-105"
+              >
+                <TelegramLogo weight="fill" className="w-4 h-4 mr-2 text-blue-400" />
+                <span style={{textShadow: '1px 1px 2px rgba(0,0,0,0.8)'}}>Telegram</span>
+              </a>
+              <a 
+                href="/whitepaper.pdf" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center bg-black/30 backdrop-blur border border-white/20 px-4 py-2 rounded-full shadow-lg hover:bg-black/40 transition-all duration-200 hover:scale-105"
+              >
+                <FileText weight="fill" className="w-4 h-4 mr-2 text-accent" />
+                <span style={{textShadow: '1px 1px 2px rgba(0,0,0,0.8)'}}>Whitepaper</span>
+              </a>
+            </motion.div>
+            
+          </motion.div>
         </div>
       </section>
     </div>

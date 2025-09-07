@@ -6,7 +6,11 @@
       "Bash(git push:*)",
       "Bash(npm install)",
       "Bash(npm run dev:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(npx:*)",
+      "Bash(npm install:*)",
+      "Read(//c/Users/seunt/Downloads/screenshots/**)"
     ],
     "deny": [],
     "ask": []
