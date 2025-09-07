@@ -5,7 +5,7 @@ import { useWallet } from '@/context/WalletContext';
 import { SavingsGoal } from '@/types';
 
 export default function Dashboard() {
-  const { wallet, connect } = useWallet();
+  const { wallet, connect, hasHavenAccess } = useWallet();
   const [savingsGoals, setSavingsGoals] = useState<SavingsGoal[]>([]);
   const [showCreateGoal, setShowCreateGoal] = useState(false);
   const [newGoal, setNewGoal] = useState({
@@ -88,8 +88,16 @@ export default function Dashboard() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8 animate-fade-in-up">
-          <h1 className="text-3xl font-bold text-gray-900">Savings Dashboard</h1>
-          <p className="text-gray-600 mt-2">Track your savings goals and property investments</p>
+          <h1 className="text-3xl font-bold text-gray-900">HavenFi Vault</h1>
+          <p className="text-gray-600 mt-2">Secure your stablecoins and access tokenized opportunities</p>
+          {wallet.havenTokens && (
+            <div className="mt-4 inline-flex items-center px-4 py-2 bg-blue-50 text-blue-800 text-sm font-medium rounded-lg">
+              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+              {wallet.havenTokens} HAVEN tokens in wallet
+            </div>
+          )}
         </div>
 
         {/* Wallet Balance */}
@@ -103,14 +111,14 @@ export default function Dashboard() {
             <p className="text-3xl font-bold text-green-600 animate-float delay-100">${wallet.balance.usdt}</p>
           </div>
           <div className="bg-white rounded-lg p-6 shadow-sm hover-lift animate-fade-in-scale delay-300">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">DAI Balance</h3>
-            <p className="text-3xl font-bold text-purple-600 animate-float delay-200">${wallet.balance.dai}</p>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">HAVEN Tokens</h3>
+            <p className="text-3xl font-bold text-slate-600 animate-float delay-200">{wallet.havenTokens}</p>
           </div>
         </div>
 
         {/* Savings Goals Header */}
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-900">Your Savings Goals</h2>
+          <h2 className="text-2xl font-bold text-gray-900">Your Vault Goals</h2>
           <button
             onClick={() => setShowCreateGoal(true)}
             className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 animate-pulse-glow"
@@ -122,12 +130,12 @@ export default function Dashboard() {
         {/* Savings Goals Grid */}
         {savingsGoals.length === 0 ? (
           <div className="text-center py-12 bg-white rounded-lg">
-            <p className="text-gray-500 text-lg mb-4">No savings goals yet</p>
+            <p className="text-gray-500 text-lg mb-4">No vault goals yet</p>
             <button
               onClick={() => setShowCreateGoal(true)}
               className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700"
             >
-              Create Your First Goal
+              Create Your First Vault Goal
             </button>
           </div>
         ) : (
@@ -147,7 +155,7 @@ export default function Dashboard() {
         {showCreateGoal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4">
-              <h3 className="text-2xl font-bold mb-4">Create Savings Goal</h3>
+              <h3 className="text-2xl font-bold mb-4">Create Vault Goal</h3>
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -157,8 +165,9 @@ export default function Dashboard() {
                     type="text"
                     value={newGoal.title}
                     onChange={(e) => setNewGoal({ ...newGoal, title: e.target.value })}
-                    placeholder="e.g., Buy Land in Accra"
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+                    placeholder="e.g., Access Premium Opportunities"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-900 placeholder-gray-500 bg-white"
+                    style={{ color: '#111827', backgroundColor: '#ffffff', WebkitTextFillColor: '#111827' }}
                   />
                 </div>
                 <div>
@@ -170,7 +179,8 @@ export default function Dashboard() {
                     value={newGoal.targetAmount}
                     onChange={(e) => setNewGoal({ ...newGoal, targetAmount: e.target.value })}
                     placeholder="25000"
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-900 placeholder-gray-500 bg-white"
+                    style={{ color: '#111827', backgroundColor: '#ffffff', WebkitTextFillColor: '#111827' }}
                   />
                 </div>
                 <div>
@@ -181,7 +191,8 @@ export default function Dashboard() {
                     type="date"
                     value={newGoal.targetDate}
                     onChange={(e) => setNewGoal({ ...newGoal, targetDate: e.target.value })}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-900 placeholder-gray-500 bg-white"
+                    style={{ color: '#111827', backgroundColor: '#ffffff', WebkitTextFillColor: '#111827' }}
                   />
                 </div>
               </div>
@@ -194,7 +205,7 @@ export default function Dashboard() {
                 </button>
                 <button
                   onClick={handleCreateGoal}
-                  className="flex-1 bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700"
+                  className="flex-1 bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
                 >
                   Create Goal
                 </button>
@@ -276,7 +287,7 @@ function GoalCard({ goal, onLockFunds, walletBalance }: GoalCardProps) {
                 <select
                   value={selectedCoin}
                   onChange={(e) => setSelectedCoin(e.target.value)}
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white"
                 >
                   <option value="usdc">USDC (Balance: ${walletBalance.usdc})</option>
                   <option value="usdt">USDT (Balance: ${walletBalance.usdt})</option>
@@ -292,7 +303,7 @@ function GoalCard({ goal, onLockFunds, walletBalance }: GoalCardProps) {
                   value={lockAmount}
                   onChange={(e) => setLockAmount(e.target.value)}
                   placeholder="Enter amount"
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-900 placeholder-gray-500 bg-white"
                 />
               </div>
             </div>
@@ -305,7 +316,7 @@ function GoalCard({ goal, onLockFunds, walletBalance }: GoalCardProps) {
               </button>
               <button
                 onClick={handleLockFunds}
-                className="flex-1 bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700"
+                className="flex-1 bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
               >
                 Lock Funds
               </button>

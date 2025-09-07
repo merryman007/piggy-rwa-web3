@@ -3,7 +3,7 @@ export interface Property {
   title: string;
   price: string;
   location: string;
-  growthPotential: string;
+  accessLevel: string;
   status: string;
   image: string;
   description: string;
@@ -46,4 +46,5 @@ export interface WalletState {
     usdt: string;
     dai: string;
   };
+  havenTokens: string;
 }

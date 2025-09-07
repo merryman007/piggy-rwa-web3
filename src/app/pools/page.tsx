@@ -5,8 +5,8 @@ import { useWallet } from '@/context/WalletContext';
 import { Pool } from '@/types';
 import pools from '@/data/pools.json';
 
-export default function CommunityPools() {
-  const { wallet, connect } = useWallet();
+export default function LiquidityPools() {
+  const { wallet, connect, hasHavenAccess } = useWallet();
   const [showJoinModal, setShowJoinModal] = useState(false);
   const [selectedPool, setSelectedPool] = useState<Pool | null>(null);
   const [contributionAmount, setContributionAmount] = useState('');
@@ -23,7 +23,7 @@ export default function CommunityPools() {
     if (!selectedPool || !contributionAmount) return;
     
     // Mock join pool logic
-    alert(`Successfully joined ${selectedPool.title} with $${contributionAmount} ${selectedCoin.toUpperCase()}!`);
+    alert(`Successfully accessed ${selectedPool.title} with $${contributionAmount} ${selectedCoin.toUpperCase()}!`);
     setShowJoinModal(false);
     setContributionAmount('');
     setSelectedPool(null);
@@ -35,11 +35,11 @@ export default function CommunityPools() {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Community Savings Pools
+            Liquidity Pools
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Join forces with other savers to collectively invest in high-value real estate. 
-            Pool your resources and share in the rewards of property ownership.
+            Access shared liquidity opportunities for tokenized real estate assets. 
+            Participate in collective access to verified property opportunities.
           </p>
         </div>
 
@@ -78,11 +78,11 @@ export default function CommunityPools() {
           ))}
         </div>
 
-        {/* Join Pool Modal */}
+        {/* Access Pool Modal */}
         {showJoinModal && selectedPool && wallet.connected && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4">
-              <h3 className="text-2xl font-bold mb-4">Join {selectedPool.title}</h3>
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">Access {selectedPool.title}</h3>
               
               <div className="mb-4 p-4 bg-blue-50 rounded-lg">
                 <div className="flex justify-between items-center mb-2">
@@ -109,7 +109,7 @@ export default function CommunityPools() {
                   <select
                     value={selectedCoin}
                     onChange={(e) => setSelectedCoin(e.target.value)}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white"
                   >
                     <option value="usdc">USDC (Balance: ${wallet.balance.usdc})</option>
                     <option value="usdt">USDT (Balance: ${wallet.balance.usdt})</option>
@@ -126,7 +126,7 @@ export default function CommunityPools() {
                     onChange={(e) => setContributionAmount(e.target.value)}
                     placeholder={`Minimum $${selectedPool.minContribution}`}
                     min={selectedPool.minContribution}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white"
                   />
                   <p className="text-sm text-gray-500 mt-1">
                     Minimum contribution: ${selectedPool.minContribution}
@@ -149,9 +149,9 @@ export default function CommunityPools() {
                 </button>
                 <button
                   onClick={confirmJoinPool}
-                  className="flex-1 bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700"
+                  className="flex-1 bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700"
                 >
-                  Join Pool
+                  Access Pool
                 </button>
               </div>
             </div>
@@ -262,16 +262,16 @@ function PoolCard({ pool, onJoin, isWalletConnected, onConnect }: PoolCardProps)
         {isWalletConnected ? (
           <button
             onClick={onJoin}
-            className="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors"
+            className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
           >
-            Join Pool
+            Access Pool
           </button>
         ) : (
           <button
             onClick={onConnect}
             className="w-full bg-gray-300 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-400 transition-colors"
           >
-            Connect Wallet to Join
+            Connect Wallet to Access
           </button>
         )}
       </div>

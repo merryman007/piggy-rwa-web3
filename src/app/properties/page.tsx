@@ -13,11 +13,11 @@ export default function Properties() {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Investment Properties
+            Tokenized Asset Opportunities
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Discover verified real estate opportunities across Africa's most promising markets.
-            All properties are blockchain-verified and backed by legal documentation.
+            Access verified, tokenized real estate opportunities with complete transparency.
+            All assets are blockchain-verified with full legal documentation and compliance.
           </p>
         </div>
 
@@ -26,7 +26,7 @@ export default function Properties() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Location</label>
-              <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+              <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white">
                 <option>All Locations</option>
                 <option>Ghana</option>
                 <option>Nigeria</option>
@@ -37,7 +37,7 @@ export default function Properties() {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Price Range</label>
-              <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+              <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white">
                 <option>All Prices</option>
                 <option>Under $100K</option>
                 <option>$100K - $200K</option>
@@ -47,7 +47,7 @@ export default function Properties() {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Property Type</label>
-              <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+              <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white">
                 <option>All Types</option>
                 <option>Commercial</option>
                 <option>Residential</option>
@@ -58,7 +58,7 @@ export default function Properties() {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Status</label>
-              <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+              <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white">
                 <option>All Status</option>
                 <option>Available</option>
                 <option>Partially Funded</option>
@@ -104,10 +104,6 @@ function PropertyCard({ property }: PropertyCardProps) {
           src={property.image} 
           alt={property.title}
           className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.style.display = 'none';
-          }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
         {property.verified && (
@@ -140,20 +136,20 @@ function PropertyCard({ property }: PropertyCardProps) {
           </div>
           <div className="flex items-center text-sm text-gray-600">
             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
-            {property.growthPotential}
+            {property.accessLevel}
           </div>
         </div>
 
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-2xl font-bold text-indigo-600">${property.price}</p>
-            <p className="text-sm text-gray-500">Total Investment</p>
+            <p className="text-2xl font-bold text-blue-600">${property.price}</p>
+            <p className="text-sm text-gray-500">Asset Value</p>
           </div>
           <Link 
             href={`/properties/${property.id}`}
-            className="bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+            className="bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-200 hover:shadow-lg"
           >
             View Details
           </Link>

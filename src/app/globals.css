@@ -149,3 +149,35 @@ body {
 .delay-400 { animation-delay: 0.4s; }
 .delay-500 { animation-delay: 0.5s; }
 .delay-600 { animation-delay: 0.6s; }
+
+/* Force visible text for all inputs - more aggressive targeting */
+input[type="text"],
+input[type="number"], 
+input[type="date"],
+select,
+.modal input,
+.modal select,
+[class*="modal"] input,
+[class*="modal"] select {
+  color: rgb(17, 24, 39) !important;
+  background-color: white !important;
+  -webkit-text-fill-color: rgb(17, 24, 39) !important;
+}
+
+input::placeholder,
+.modal input::placeholder,
+[class*="modal"] input::placeholder {
+  color: rgb(107, 114, 128) !important;
+  -webkit-text-fill-color: rgb(107, 114, 128) !important;
+  opacity: 1 !important;
+}
+
+/* Target specific modal containers */
+.fixed.inset-0 input[type="text"],
+.fixed.inset-0 input[type="number"],
+.fixed.inset-0 input[type="date"],
+.fixed.inset-0 select {
+  color: rgb(17, 24, 39) !important;
+  background-color: white !important;
+  -webkit-text-fill-color: rgb(17, 24, 39) !important;
+}
