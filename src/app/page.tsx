@@ -299,7 +299,7 @@ export default function Home() {
               transition={{ delay: 0.8, duration: 0.6 }}
             >
               <a 
-                href="https://x.com/havenfi" 
+                href="https://x.com/havenfi_RWA" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center bg-black/30 backdrop-blur border border-white/20 px-4 py-2 rounded-full shadow-lg hover:bg-black/40 transition-all duration-200 hover:scale-105"
