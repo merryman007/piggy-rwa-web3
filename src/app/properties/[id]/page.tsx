@@ -2,13 +2,45 @@
 
 import { useState } from 'react';
 import { useParams } from 'next/navigation';
-import { useWallet } from '@/context/WalletContext';
+import { useWeb3 } from '@/context/Web3Context';
 import { Property } from '@/types';
 import properties from '@/data/properties.json';
 
 export default function PropertyDetail() {
   const params = useParams();
-  const { wallet, connect, hasHavenAccess } = useWallet();
+  const { web3State, connect } = useWeb3();
+  
+  const hasHavenAccess = (requiredLevel: string) => {
+    if (!web3State.balance?.haven) {
+      console.log('❌ No HAVEN balance found');
+      return false;
+    }
+    
+    const havenBalance = parseInt(web3State.balance.haven);
+    console.log('🔍 Access Check:', {
+      requiredLevel,
+      havenBalance,
+      rawBalance: web3State.balance.haven,
+      isNumber: !isNaN(havenBalance)
+    });
+    
+    let hasAccess = false;
+    switch (requiredLevel) {
+      case 'Standard':
+      case 'HAVEN Standard': 
+        hasAccess = havenBalance >= 999;
+        console.log('✅ Standard check:', havenBalance, '>=', 999, '=', hasAccess);
+        return hasAccess;
+      case 'Premium':
+      case 'HAVEN Premium': 
+        hasAccess = havenBalance >= 4999;
+        console.log('✅ Premium check:', havenBalance, '>=', 4999, '=', hasAccess);
+        return hasAccess;
+      default: 
+        console.log('❌ Unknown access level:', requiredLevel);
+        return false;
+    }
+  };
   const [showPurchaseModal, setShowPurchaseModal] = useState(false);
   const [contributionAmount, setContributionAmount] = useState('');
   const [selectedCoin, setSelectedCoin] = useState('usdc');
@@ -18,10 +50,10 @@ export default function PropertyDetail() {
   );
 
   // Debug logging
-  if (property && wallet.connected) {
+  if (property && web3State.isConnected) {
     console.log('🏠 Property:', property.title);
     console.log('🔒 Property Access Level:', property.accessLevel);
-    console.log('💰 User HAVEN Tokens:', wallet.havenTokens);
+    console.log('💰 User HAVEN Tokens:', web3State.balance?.haven || '0');
     console.log('✅ Has Access:', hasHavenAccess(property.accessLevel));
   }
 
@@ -124,7 +156,7 @@ export default function PropertyDetail() {
                 </div>
               </div>
 
-              {wallet.connected ? (
+              {web3State.isConnected ? (
                 <div className="border-t pt-8">
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">Additional Details (Wallet Connected)</h2>
                   <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
@@ -167,7 +199,7 @@ export default function PropertyDetail() {
                 )}
               </div>
 
-              {wallet.connected ? (
+              {web3State.isConnected ? (
                 <div className="space-y-4">
                   {hasHavenAccess(property.accessLevel) ? (
                     <>
@@ -200,9 +232,9 @@ export default function PropertyDetail() {
                   )}
                   <div className="text-sm text-gray-600 text-center">
                     <p>Your Wallet Balance:</p>
-                    <p>HAVEN: {wallet.havenTokens}</p>
-                    <p>USDC: ${wallet.balance.usdc}</p>
-                    <p>USDT: ${wallet.balance.usdt}</p>
+                    <p>HAVEN: {web3State.balance?.haven || '0'}</p>
+                    <p>USDC: ${web3State.balance?.usdc || '0'}</p>
+                    <p>ETH: {web3State.balance?.eth || '0'}</p>
                   </div>
                 </div>
               ) : (
@@ -245,7 +277,7 @@ export default function PropertyDetail() {
         </div>
 
         {/* Purchase Modal */}
-        {showPurchaseModal && wallet.connected && (
+        {showPurchaseModal && web3State.isConnected && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4">
               <h3 className="text-2xl font-bold mb-4 text-gray-900">Access {property.title}</h3>
@@ -259,9 +291,8 @@ export default function PropertyDetail() {
                     onChange={(e) => setSelectedCoin(e.target.value)}
                     className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-gray-900 bg-white"
                   >
-                    <option value="usdc">USDC (Balance: ${wallet.balance.usdc})</option>
-                    <option value="usdt">USDT (Balance: ${wallet.balance.usdt})</option>
-                    <option value="dai">DAI (Balance: ${wallet.balance.dai})</option>
+                    <option value="usdc">USDC (Balance: ${web3State.balance?.usdc || '0'})</option>
+                    <option value="eth">ETH (Balance: {web3State.balance?.eth || '0'})</option>
                   </select>
                 </div>
                 <div>

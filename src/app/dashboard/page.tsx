@@ -1,11 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useWallet } from '@/context/WalletContext';
+import { useWeb3 } from '@/context/Web3Context';
 import { SavingsGoal } from '@/types';
+import TokenFaucet from '@/components/TokenFaucet';
 
 export default function Dashboard() {
-  const { wallet, connect } = useWallet();
+  const { web3State, connect, switchToBaseSepolia } = useWeb3();
   const [savingsGoals, setSavingsGoals] = useState<SavingsGoal[]>([]);
   const [showCreateGoal, setShowCreateGoal] = useState(false);
   const [newGoal, setNewGoal] = useState({
@@ -64,7 +65,7 @@ export default function Dashboard() {
     );
   };
 
-  if (!wallet.connected) {
+  if (!web3State.isConnected) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
@@ -90,29 +91,34 @@ export default function Dashboard() {
         <div className="mb-8 animate-fade-in-up">
           <h1 className="text-3xl font-bold text-gray-900">HavenFi Vault</h1>
           <p className="text-gray-600 mt-2">Secure your stablecoins and access tokenized opportunities</p>
-          {wallet.havenTokens && (
+          {web3State.balance?.haven && parseInt(web3State.balance.haven) > 0 && (
             <div className="mt-4 inline-flex items-center px-4 py-2 bg-blue-50 text-blue-800 text-sm font-medium rounded-lg">
               <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
-              {wallet.havenTokens} HAVEN tokens in wallet
+              {web3State.balance.haven} HAVEN tokens in wallet
             </div>
           )}
+        </div>
+
+        {/* Testnet Token Faucet */}
+        <div className="mb-8">
+          <TokenFaucet />
         </div>
 
         {/* Wallet Balance */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="bg-white rounded-lg p-6 shadow-sm hover-lift animate-fade-in-scale delay-100">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">USDC Balance</h3>
-            <p className="text-3xl font-bold text-blue-600 animate-float">${wallet.balance.usdc}</p>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">ETH Balance</h3>
+            <p className="text-3xl font-bold text-blue-600 animate-float">{web3State.balance?.eth || '0'}</p>
           </div>
           <div className="bg-white rounded-lg p-6 shadow-sm hover-lift animate-fade-in-scale delay-200">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">USDT Balance</h3>
-            <p className="text-3xl font-bold text-green-600 animate-float delay-100">${wallet.balance.usdt}</p>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">USDC Balance</h3>
+            <p className="text-3xl font-bold text-green-600 animate-float delay-100">{web3State.balance?.usdc || '0'}</p>
           </div>
           <div className="bg-white rounded-lg p-6 shadow-sm hover-lift animate-fade-in-scale delay-300">
             <h3 className="text-lg font-semibold text-gray-900 mb-2">HAVEN Tokens</h3>
-            <p className="text-3xl font-bold text-slate-600 animate-float delay-200">{wallet.havenTokens}</p>
+            <p className="text-3xl font-bold text-slate-600 animate-float delay-200">{web3State.balance?.haven || '0'}</p>
           </div>
         </div>
 
@@ -145,7 +151,11 @@ export default function Dashboard() {
                 key={goal.id}
                 goal={goal}
                 onLockFunds={handleLockFunds}
-                walletBalance={wallet.balance}
+                walletBalance={{
+                  usdc: web3State.balance?.usdc || '0',
+                  usdt: '0', // Not used in testnet
+                  dai: '0'   // Not used in testnet  
+                }}
               />
             ))}
           </div>

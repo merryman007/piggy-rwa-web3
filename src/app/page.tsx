@@ -317,7 +317,7 @@ export default function Home() {
                 <span style={{textShadow: '1px 1px 2px rgba(0,0,0,0.8)'}}>Telegram</span>
               </a>
               <a 
-                href="/whitepaper.pdf" 
+                href="https://havenfi.gitbook.io/havenfi-whitepaper/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center bg-black/30 backdrop-blur border border-white/20 px-4 py-2 rounded-full shadow-lg hover:bg-black/40 transition-all duration-200 hover:scale-105"

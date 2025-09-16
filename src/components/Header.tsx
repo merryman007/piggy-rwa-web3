@@ -2,14 +2,14 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { useWallet } from '@/context/WalletContext';
+import { useWeb3 } from '@/context/Web3Context';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Anchor, Wallet } from 'phosphor-react';
 
 export default function Header() {
-  const { wallet, connect, disconnect } = useWallet();
+  const { web3State, connect: connectWeb3, disconnect: disconnectWeb3, switchToBaseSepolia } = useWeb3();
 
   return (
     <motion.header 
@@ -61,30 +61,48 @@ export default function Header() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
           >
-            {wallet.connected ? (
+            {/* Web3 Connection Status */}
+            {web3State.isConnected && (
+              <div className="flex items-center space-x-2">
+                {!web3State.isCorrectNetwork ? (
+                  <Badge 
+                    className="text-xs px-2 py-1 bg-orange-100 text-orange-800 border-orange-200 cursor-pointer hover:bg-orange-200"
+                    onClick={switchToBaseSepolia}
+                  >
+                    Switch to Base Sepolia
+                  </Badge>
+                ) : (
+                  <Badge className="text-xs px-2 py-1 bg-green-100 text-green-800 border-green-200">
+                    Base Sepolia
+                  </Badge>
+                )}
+              </div>
+            )}
+            
+            {web3State.isConnected ? (
               <div className="flex items-center space-x-3">
                 <div className="flex items-center space-x-3 bg-accent/10 rounded-xl px-4 py-2">
                   <Avatar className="h-8 w-8">
                     <AvatarFallback className="bg-primary text-primary-foreground text-sm font-medium">
-                      {wallet.address?.slice(2, 4).toUpperCase()}
+                      {web3State.address?.slice(2, 4).toUpperCase()}
                     </AvatarFallback>
                   </Avatar>
                   <div className="text-sm">
                     <div className="font-semibold text-foreground font-body">
-                      {wallet.address?.slice(0, 6)}...{wallet.address?.slice(-4)}
+                      {web3State.address?.slice(0, 6)}...{web3State.address?.slice(-4)}
                     </div>
                     <div className="flex items-center space-x-2 text-xs">
                       <Badge className="text-xs px-2 py-0 bg-primary text-primary-foreground font-medium border-0">
-                        HAVEN: {wallet.havenTokens}
+                        HAVEN: {web3State.balance?.haven || '0'}
                       </Badge>
                       <Badge variant="outline" className="text-xs px-2 py-0 border-muted-foreground/30 text-foreground bg-background/80">
-                        USDC: ${wallet.balance.usdc}
+                        ETH: {web3State.balance?.eth || '0'}
                       </Badge>
                     </div>
                   </div>
                 </div>
                 <Button
-                  onClick={disconnect}
+                  onClick={disconnectWeb3}
                   variant="outline"
                   size="sm"
                   className="border-border text-muted-foreground hover:bg-destructive/10 hover:text-destructive hover:border-destructive/30 font-body"
@@ -98,7 +116,7 @@ export default function Header() {
                 whileTap={{ scale: 0.98 }}
               >
                 <Button
-                  onClick={connect}
+                  onClick={connectWeb3}
                   className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg px-6 font-body shadow-sm"
                 >
                   <Wallet weight="bold" className="w-4 h-4 mr-2" />

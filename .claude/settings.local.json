@@ -12,7 +12,8 @@
       "Bash(npm install:*)",
       "Read(//c/Users/seunt/Downloads/screenshots/**)",
       "Bash(npm run build:*)",
-      "Bash(tree:*)"
+      "Bash(tree:*)",
+      "Bash(node:*)"
     ],
     "deny": [],
     "ask": []
